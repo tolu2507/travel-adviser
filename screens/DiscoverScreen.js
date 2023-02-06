@@ -37,27 +37,27 @@ const DiscoverScreen = () => {
         setMaindata(data);
         setInterval(() => {
           setIsLoading(false);
-        }, 2000);
+        }, 6000);
       });
     } else if (type === "hotels") {
       getHotels().then((data) => {
         setMaindata(data);
         setInterval(() => {
           setIsLoading(false);
-        }, 2000);
+        }, 6000);
       });
     } else if (type === "attractions") {
       getAttractions().then((data) => {
         setMaindata(data);
         setInterval(() => {
           setIsLoading(false);
-        }, 2000);
+        }, 6000);
       });
     } else {
       setMaindata([]);
       setInterval(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 6000);
     }
   }, [type]);
 
