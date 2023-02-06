@@ -18,7 +18,7 @@ import ItemCardContainer from "../components/ItemCardContainer";
 import { getAttractions, getHotels, getPlacesData } from "../api";
 
 const DiscoverScreen = () => {
-  const [type, setType] = useState("restaurants");
+  const [type, setType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [mainData, setMaindata] = useState([]);
   const navigation = useNavigation();
@@ -31,8 +31,8 @@ const DiscoverScreen = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    
-      if (type === "restaurants") {
+
+    if (type === "restaurants") {
       getPlacesData().then((data) => {
         setMaindata(data);
         setInterval(() => {
@@ -40,19 +40,24 @@ const DiscoverScreen = () => {
         }, 2000);
       });
     } else if (type === "hotels") {
-       getHotels().then((data) => {
-         setMaindata(data);
-         setInterval(() => {
-           setIsLoading(false);
-         }, 2000);
-       });
+      getHotels().then((data) => {
+        setMaindata(data);
+        setInterval(() => {
+          setIsLoading(false);
+        }, 2000);
+      });
     } else if (type === "attractions") {
-       getAttractions().then((data) => {
-         setMaindata(data);
-         setInterval(() => {
-           setIsLoading(false);
-         }, 2000);
-       });
+      getAttractions().then((data) => {
+        setMaindata(data);
+        setInterval(() => {
+          setIsLoading(false);
+        }, 2000);
+      });
+    } else {
+      setMaindata([]);
+      setInterval(() => {
+        setIsLoading(false);
+      }, 2000);
     }
   }, [type]);
 
