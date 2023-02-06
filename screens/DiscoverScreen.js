@@ -15,7 +15,7 @@ import MenuContainer from "../components/MenuContainer";
 
 import { FontAwesome } from "@expo/vector-icons";
 import ItemCardContainer from "../components/ItemCardContainer";
-import { getPlacesData } from "../api";
+import { getAttractions, getHotels, getPlacesData } from "../api";
 
 const DiscoverScreen = () => {
   const [type, setType] = useState("restaurants");
@@ -31,13 +31,30 @@ const DiscoverScreen = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getPlacesData().then((data) => {
-      setMaindata(data);
-      setInterval(() => {
-        setIsLoading(false);
-      }, 2000);
-    });
-  }, []);
+    
+      if (type === "restaurants") {
+      getPlacesData().then((data) => {
+        setMaindata(data);
+        setInterval(() => {
+          setIsLoading(false);
+        }, 2000);
+      });
+    } else if (type === "hotels") {
+       getHotels().then((data) => {
+         setMaindata(data);
+         setInterval(() => {
+           setIsLoading(false);
+         }, 2000);
+       });
+    } else if (type === "attractions") {
+       getAttractions().then((data) => {
+         setMaindata(data);
+         setInterval(() => {
+           setIsLoading(false);
+         }, 2000);
+       });
+    }
+  }, [type]);
 
   return (
     <SafeAreaView className="flex-1 bg-white-600 relative mt-10">
@@ -78,6 +95,7 @@ const DiscoverScreen = () => {
               imageSrc={Hotels}
               type={type}
               setType={setType}
+              setMaindata={setMaindata}
             />
             <MenuContainer
               key={"attractions"}
@@ -85,6 +103,7 @@ const DiscoverScreen = () => {
               imageSrc={Attractions}
               type={type}
               setType={setType}
+              setMaindata={setMaindata}
             />
             <MenuContainer
               key={"restaurants"}
@@ -92,6 +111,7 @@ const DiscoverScreen = () => {
               imageSrc={Restaurants}
               type={type}
               setType={setType}
+              setMaindata={setMaindata}
             />
           </View>
 
@@ -124,8 +144,8 @@ const DiscoverScreen = () => {
                           : "https://cdn.pixabay.com/photo/2015/10/30/12/22/eat-1014025_1280.jpg"
                       }
                       title={data?.name}
-                          location={data?.location_string}
-                          data={data}
+                      location={data?.location_string}
+                      data={data}
                     />
                   ))}
                 </>

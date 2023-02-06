@@ -1,17 +1,18 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
+import { getAttractions, getHotels, getPlacesData } from "../api";
 
-const MenuContainer = ({ title, imageSrc, type, setType }) => {
-  const handlePress = () => {
+const MenuContainer = ({ title, imageSrc, type, setType}) => {
+  const handlePress = async () => {
     setType(title.toLowerCase());
   };
   return (
     <TouchableOpacity
-      className="items-center justify-center space-y-2"
+      className="items-center justify-center space-y-1"
       onPress={handlePress}
     >
       <View
-        className={`w-24 h-24 p-2 shadow-sm rounded-full items-center justify-center ${
+        className={`w-20 h-20 p-1 shadow-sm rounded-full items-center justify-center ${
           type === title.toLowerCase() ? "bg-gray-200" : ""
         }`}
       >
