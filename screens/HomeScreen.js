@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from "react";
 import * as Animatable from "react-native-animatable";
-import { View, Text, SafeAreaView, Image,TouchableOpacity } from "react-native";
+import { View, Text, SafeAreaView,TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { HeroImage } from "../assets";
 const HomeScreen = () => {

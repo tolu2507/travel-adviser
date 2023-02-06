@@ -69,7 +69,7 @@ const DiscoverScreen = () => {
           <Text className="text-[#527283] text-[33px]">the beauty today</Text>
         </View>
 
-        <View className="w-12 h-12 rounded-md items-center justify-center shadow-1g">
+        <View className="w-12 h-12 rounded-md items-center justify-center shadow-lg">
           <Image
             source={Avatar}
             className="w-full h-full rounded-md object-cover"

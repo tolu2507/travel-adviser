@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import { getAttractions, getHotels, getPlacesData } from "../api";
 
 const MenuContainer = ({ title, imageSrc, type, setType}) => {
   const handlePress = async () => {
